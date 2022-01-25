@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.netology</groupId>
-    <artifactId>LookingForBugs</artifactId>
+    <artifactId>ImplementingCodingStandards</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -25,7 +25,29 @@
     </dependencies>
 
     <build>
+
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -96,12 +118,12 @@
             </rules>
         </configuration>
 
-
     </execution>
         </executions>
     </plugin>
 
-        </plugins>
+            </plugins>
+
     </build>
 
 
